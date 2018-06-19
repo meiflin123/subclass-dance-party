@@ -1,9 +1,9 @@
-var makeBouncyDancer = function(top, left, timeBetweenSteps) {
+var makeSlideDancer = function(top, left, timeBetweenSteps) {
   // var blinkyDancer = MakeDancer.call(this, top, left, timeBetweenSteps);
   // var blinkyDancer = makeDancer(top, left, timeBetweenSteps);
-  this.$node = $('<span class="dancer bouncyDancer"></span>');
-  this.bigger = true;
-  this.size = 0;
+  this.$node = $('<span class="dancer slideDancer"></span>');
+  this.movingRight = true;
+  this.position = 0;
   // debugger;
   makeDancer.call(this, top, left, timeBetweenSteps);
 
@@ -17,24 +17,26 @@ var makeBouncyDancer = function(top, left, timeBetweenSteps) {
 
 };
 
-makeBouncyDancer.prototype = Object.create(makeDancer.prototype);
+makeSlideDancer.prototype = Object.create(makeDancer.prototype);
 
-makeBouncyDancer.prototype.step = function(timeBetweenSteps) {
+makeSlideDancer.prototype.step = function(timeBetweenSteps, top, left) {
   
-  makeDancer.prototype.step.call(this, timeBetweenSteps);
+  makeDancer.prototype.step.call(this, timeBetweenSteps, top, left);
   // this.$node.toggle();
-  // this.$node.effect('bounce');
-  //, {distance: 40});
-  if (this.bigger) {
-    this.size += 50;
+  // this.$node.animate({ "left": "-=5px" }, "slow" );
+  // this.setPosition(top, left);
+  if (this.movingRight) {
+    this.position += 50;
   } else {
-    this.size -= 50;
+    this.position -= 50;
   }
   var styleSettings = {
-    'border-radius': this.size
+    top: top + this.position,
+    left: left + this.position
   };
   this.$node.css(styleSettings);
 
-  this.bigger = this.bigger ? false : true;
+  this.movingRight = this.movingRight ? false : true;
+  
 
 };
