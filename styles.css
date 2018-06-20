@@ -10,7 +10,7 @@ body{
 body, a:link, a:visited, a:active{
   color: lightblue;
 }
-.title, .addDancerButton{
+.title, .addDancerButton, .makeLineUp{
   padding:5px 12px;
   float:right;
 }
@@ -23,15 +23,14 @@ body, a:link, a:visited, a:active{
 }
 .dancer{
   border:10px solid red;
-  border-radius:10px;
+  border-radius:100%;
   position:absolute;
+  min-width: 30px;
+  min-height: 30px;
 }
 
 .blinkyDancer{
   width: 100px;
   height: 40px;
-}
-
-.blinkyDancer{
 }
 
